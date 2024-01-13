@@ -4,10 +4,10 @@ from email.mime.multipart import MIMEMultipart
 from pretty_html_table import build_table
 import smtplib
 import ssl
-from common import *
+#from common import *
 
 
-def do_email(to_mail):
+def do_email(to_mail,sender,receiver):
     news_table=to_mail
     news_set=news_table.drop(columns=["pos","neu","neg","ids"])
     
@@ -29,4 +29,4 @@ def do_email(to_mail):
         smtp.login(sender,password)
         smtp.sendmail(sender,receiver,msg_body)
         
-    return 0
+    return None

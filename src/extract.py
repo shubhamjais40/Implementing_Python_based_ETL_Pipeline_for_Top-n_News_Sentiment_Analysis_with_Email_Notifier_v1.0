@@ -4,8 +4,6 @@ import pandas as pd
 from bs4 import BeautifulSoup as bs
 from datetime import datetime
 import sys
-#sys.path.append(r'C:\Users\cvb\Documents\automation_python\etl_python')
-from common import *
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
