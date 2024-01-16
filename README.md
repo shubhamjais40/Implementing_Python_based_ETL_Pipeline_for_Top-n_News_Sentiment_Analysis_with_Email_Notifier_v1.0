@@ -37,6 +37,8 @@ To setup & implement the data pipeline of code to automated workflow and achieve
 - Mail Account of sender & receiver(One for Dev env)
 - Docker (to run as isolated container)
 
+## Data Workflow Diagram
+![ETL_workflow](https://github.com/shubhamjais40/Implementing_Python_based_ETL_Pipeline_for_Top-n_News_Sentiment_Analysis_with_Email_Notifier_v1.0/blob/2f80cd4fb8bca2513ed2dc025559c1236feca09b/loaded_data/etl_diagram.png)
 
 #### Python Lib Used:
 `sys`
@@ -116,12 +118,22 @@ def csv_loader(df):
 def do_email(dataframe):
     return None
 ```
-
+![Email_workflow](https://github.com/shubhamjais40/Implementing_Python_based_ETL_Pipeline_for_Top-n_News_Sentiment_Analysis_with_Email_Notifier_v1.0/blob/2f80cd4fb8bca2513ed2dc025559c1236feca09b/loaded_data/output.JPG)
 ### Pipeline runner
 
-Pipeline workflow is implemented under etl_run.py under main function. Logging is also used to track ETL pipeline failure in any case so to debug easily.
+Pipeline workflow is implemented with Python module etl_run.py . Logging is also used to track ETL pipeline failure in any case so to debug easily.
+In Linux Environment, cron job can be setup with job_scheduler.sh to run, every hour as articles usually gets latest feeds.
 
 ## Challenges
-
+- HTML tags scraping and extracting required tags using BeautifulSoup lib.
+- Sentiment analysis of news article and transforming using sentiment function to categorize into positive,neutral & negative articles.
+- Using pandas to format overall json based data structure to dataframe.
+- Preparing dataframe to HTML table format using MIME lib and sending email notification.
+- Scheduling etl_run file using cron job which has to be run at every hour. [* */1 * * *]
+- Loading data locally as CSV file.
 
 ## Future Recommendation
+
+- For more accurate sentiment analysis, we can go for Naive Bayes, TextBlob, Deep Learning LSTM NLP models. 
+
+- For scalable workloads and complex scheduling, Data Pipeline tools could be used such as Airflow, AWS Pipeline,etc.
